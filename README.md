@@ -18,7 +18,7 @@
 # Commands
 **css_ctban**
 
-`Usage: /ctban <SteamID> <Hours> 'REASON'
+`Usage: /ctban <SteamID> <Hours> 'REASON'`
 
 **css_unctban**
 
