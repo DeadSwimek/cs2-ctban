@@ -18,7 +18,7 @@
 # Commands
 **css_ctban**
 
-`Usage: /ctban <SteamID> <Hours> 'REASON'` Automatical giving group 0 (GROUP 1)
+`Usage: /ctban <SteamID> <Hours> 'REASON'
 
 **css_unctban**
 
