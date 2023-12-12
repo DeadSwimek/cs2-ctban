@@ -1,4 +1,4 @@
-#TBans
+# TBans
 
 
 [CLICK TO ALTERNATIVE T BANS](https://github.com/DeadSwimek/cs2-tban)
