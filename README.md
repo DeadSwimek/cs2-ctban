@@ -1,3 +1,6 @@
+#TBans
+[CLICK TO ALTERNATIVE T BANS](https://github.com/DeadSwimek/cs2-tban)
+
 
 ##### Lists of my plugins
 > [VIP](https://github.com/DeadSwimek/cs2-vip), [VIP Premium](https://github.com/DeadSwimek/cs2-vip-premium), [SpecialRounds](https://github.com/DeadSwimek/cs2-specialrounds), [Countdown](https://github.com/DeadSwimek/cs2-countdown), [CTBans](https://github.com/DeadSwimek/cs2-ctban), [HideAdmin](https://github.com/DeadSwimek/cs2-hideadmin)
