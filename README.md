@@ -29,6 +29,10 @@
 
 `Usage: /unctban <SteamID>`
 
+**css_isctbanned**
+
+`Usage: /isctbanned <SteamID>`
+
 | Command      | Permission   |
 | ------------ | ------------ |
 | `css_ctban`    | @css/ban     |
