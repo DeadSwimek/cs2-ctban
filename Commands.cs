@@ -1,4 +1,4 @@
-﻿using CounterStrikeSharp.API;
+using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
@@ -78,7 +78,7 @@ public partial class CTBans
                 MySql.Table("deadswim_ctbans").Insert(values);
 
                 info.ReplyToCommand($" {Config.Prefix} You successful ban player with steamid {SteamID}");
-                foreach (var find_player in Utilities.GetPlayers().Where(player => player is { IsBot: false, IsValid: true }))
+                foreach (var find_player in Utilities.GetPlayers())
                 {
                     if(find_player.SteamID.ToString() == SteamID)
                     {
@@ -119,6 +119,44 @@ public partial class CTBans
         {
             MySql.Table("deadswim_ctbans").Where($"ban_steamid = '{SteamID}'").Delete();
             info.ReplyToCommand($" {Config.Prefix} You successful unban a player to play in CT Team!");
+        }
+    }
+    [ConsoleCommand("css_isctbanned", "Info about CT Ban")]
+    public void InfobanCT(CCSPlayerController? player, CommandInfo info)
+    {
+        if (!AdminManager.PlayerHasPermissions(player, "@css/ban"))
+        {
+            info.ReplyToCommand($" {Config.Prefix} You dosen't have permission to this command!");
+            return;
+        }
+        var SteamID = info.ArgByIndex(1);
+        if (SteamID == null || !IsInt(SteamID))
+        {
+            info.ReplyToCommand($" {Config.Prefix} Steamid is must be number! Example : css_isctbanned <SteamID> | Example2 : css_isctbanned 7777777777777");
+            return;
+        }
+
+        MySqlDb MySql = new MySqlDb(Config.DBHost, Config.DBUser, Config.DBPassword, Config.DBDatabase);
+
+        MySqlQueryResult result = MySql!.Table("deadswim_ctbans").Where(MySqlQueryCondition.New("ban_steamid", "=", SteamID)).Select();
+        if (result.Rows == 0)
+        {
+            info.ReplyToCommand($" {Config.Prefix} This SteamID is not Banned to CT!");
+        }
+        else
+        {
+            var time = result.Get<int>(0, "end");
+            string reason = result.Get<string>(0, "reason");
+
+            var timeRemaining = DateTimeOffset.FromUnixTimeSeconds(time) - DateTimeOffset.UtcNow;
+            var nowtimeis = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            var timeRemainingFormatted =
+            $"{timeRemaining.Days}d {timeRemaining.Hours}:{timeRemaining.Minutes:D2}:{timeRemaining.Seconds:D2}";
+            player.PrintToChat($" {ChatColors.Red}|-------------| {ChatColors.Default}Info about {SteamID} {ChatColors.Red}|-------------|");
+            player.PrintToChat($" {ChatColors.Default}SteamID {ChatColors.Red}{SteamID}{ChatColors.Default} is {ChatColors.Red}banned.");
+            player.PrintToChat($" {ChatColors.Default}Reason of ban is {ChatColors.Red}{reason}{ChatColors.Default}.");
+            player.PrintToChat($" {ChatColors.Default}Time of ban is {ChatColors.Red}{timeRemainingFormatted}{ChatColors.Default}.");
+            player.PrintToChat($" {ChatColors.Red}|-------------| {ChatColors.Default}Info about {SteamID} {ChatColors.Red}|-------------|");
         }
     }
 }
