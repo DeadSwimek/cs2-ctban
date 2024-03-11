@@ -1,4 +1,4 @@
-﻿using CounterStrikeSharp.API;
+using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Utils;
 using Nexd.MySQL;
@@ -48,7 +48,7 @@ public partial class CTBans
 
 
 
-            MySql.ExecuteNonQueryAsync(@"CREATE TABLE IF NOT EXISTS `deadswim_ctbans` (`id` INT AUTO_INCREMENT PRIMARY KEY, `ban_steamid` VARCHAR(32) UNIQUE NOT NULL, `end` INT(11) NOT NULL, `reason` VARCHAR(32) UNIQUE NOT NULL, `banned_by` VARCHAR(32) UNIQUE NOT NULL, UNIQUE (`ban_steamid`));");
+            MySql.ExecuteNonQueryAsync(@"CREATE TABLE IF NOT EXISTS `deadswim_ctbans` (`id` INT AUTO_INCREMENT PRIMARY KEY, `ban_steamid` VARCHAR(32) UNIQUE NOT NULL, `end` INT(11) NOT NULL, `reason` VARCHAR(32) NOT NULL, `banned_by` VARCHAR(32) NOT NULL, UNIQUE (`ban_steamid`));");
 
             WriteColor($"CT BANS - *[MySQL {Config.DBHost} Connected]", ConsoleColor.Green);
 
@@ -88,7 +88,7 @@ public partial class CTBans
         MySqlQueryResult result = MySql!.Table("deadswim_ctbans").Where(MySqlQueryCondition.New("ban_steamid", "=", player.SteamID.ToString())).Select();
         if (result.Rows == 1)
         {
-            return $"{result.Get<int>(0, "reason")}";
+            return $"{result.Get<string>(0, "reason")}";
         }
         return null;
     }
