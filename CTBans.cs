@@ -10,6 +10,9 @@ using CounterStrikeSharp.API.Modules.Timers;
 using System.ComponentModel;
 using CounterStrikeSharp.API.Modules.Memory;
 using Nexd.MySQL;
+using CounterStrikeSharp.API.Modules.Entities;
+using System;
+using System.Drawing;
 
 namespace CTBans;
 [MinimumApiVersion(100)]
@@ -35,6 +38,7 @@ public partial class CTBans : BasePlugin, IPluginConfig<ConfigBan>
     private static readonly bool?[] banned = new bool?[64];
     private static readonly string?[] remaining = new string?[64];
     private static readonly string?[] reason = new string?[64];
+    private static readonly int?[] Showinfo = new int?[64];
 
 
     public ConfigBan Config { get; set; }
@@ -51,6 +55,31 @@ public partial class CTBans : BasePlugin, IPluginConfig<ConfigBan>
         CreateDatabase();
 
         AddCommandListener("jointeam", OnPlayerChangeTeam);
+        RegisterListener<Listeners.OnTick>(() =>
+        {
+        for (int i = 1; i < Server.MaxPlayers; i++)
+        {
+            var ent = NativeAPI.GetEntityFromIndex(i);
+            if (ent == 0)
+                continue;
+            var client = new CCSPlayerController(ent);
+            if (client == null || !client.IsValid)
+                continue;
+                if (Showinfo[client.Index] == 1)
+                {
+                    client.PrintToCenterHtml(
+                            $"<img src='https://icons.iconarchive.com/icons/paomedia/small-n-flat/48/sign-ban-icon.png'><br><br>" +
+                            $"You are <font color='red'>banned</font> to join in <font color='blue'>CT</font>!<br>" +
+                            $"<font color='green'>Remaining time</font> <font color='red'>{remaining[client.Index]}</font><br>" +
+                            $"<font color='green'>Reason of ban</font>  <font color='red'>{reason[client.Index]}</font><br>");
+                    AddTimer(10.0f, () =>
+                    {
+                        Showinfo[client.Index] = null;
+                    });
+                }
+        }
+        });
+
     }
     [GameEventHandler]
     public HookResult OnPlayerConnect(EventPlayerConnectFull @event, GameEventInfo info)
@@ -68,9 +97,13 @@ public partial class CTBans : BasePlugin, IPluginConfig<ConfigBan>
 
             if (GetPlayerBanTime(player) < nowtimeis)
             {
+                MySqlDb MySql = new MySqlDb(Config.DBHost, Config.DBUser, Config.DBPassword, Config.DBDatabase);
+                var steamid = player.SteamID.ToString();
+                MySql.Table("deadswim_ctbans").Where($"ban_steamid = '{steamid}'").Delete();
                 banned[client] = false;
                 remaining[client] = null;
                 reason[client] = null;
+                Showinfo[client] = null;
             }
             else
             {
@@ -112,6 +145,7 @@ public partial class CTBans : BasePlugin, IPluginConfig<ConfigBan>
                 player.PrintToChat($" {Config.Prefix} You are banned to connect in {ChatColors.LightBlue}CT{ChatColors.Default}.");
                 player.PrintToChat($" {Config.Prefix} Remaining of Ban to {ChatColors.LightBlue}CT{ChatColors.Default} is {ChatColors.Red}{remaining[client]}.");
                 player.PrintToChat($" {Config.Prefix} Reason of ban is is {ChatColors.Red}{reason[client]}.");
+                Showinfo[client] = 1;
 
                 player.ExecuteClientCommand("play sounds/ui/counter_beep.vsnd");
                 return HookResult.Stop;
