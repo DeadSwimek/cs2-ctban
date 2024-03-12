@@ -109,17 +109,20 @@ public partial class CTBans
             {
                 banned[client] = false;
                 remaining[client] = null;
+                reason[client] = null;
             }
             else
             {
                 banned[client] = true;
                 remaining[client] = $"{timeRemainingFormatted}";
+                reason[client] = GetPlayerBanReason(player);
             }
         }
         else
         {
             banned[client] = false;
             remaining[client] = null;
+            reason[client] = null;
         }
     }
 }
