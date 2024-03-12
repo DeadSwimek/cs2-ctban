@@ -32,19 +32,31 @@ public partial class CTBans
             Bannedby = player.SteamID.ToString();
         }
 
-        if (SteamID == null || !IsInt(SteamID))
+        foreach (var find_player in Utilities.GetPlayers())
         {
-            info.ReplyToCommand($" {Config.Prefix} Steamid is must be number! Example : css_ctban <SteamID> <Hours> 'REASON' | Example2 : css_ctban 7777777777777 24 Greafing");
-            return;
+            if (find_player.PlayerName.ToString() == SteamID)
+            {
+                info.ReplyToCommand($" {Config.Prefix} Player name has been found, and got a banned to join in CT!");
+                SteamID = find_player.SteamID.ToString();
+            }
+            else
+            {
+                if (SteamID == null || !IsInt(SteamID))
+                {
+                    info.ReplyToCommand($" {Config.Prefix} Player name not found! Steamid is must be number! Example : css_ctban <PlayerName/SteamID> <Hours> 'REASON' | Example2 : css_ctban 7777777777777 24 Greafing");
+                    return;
+                }
+            }
         }
-        else if (TimeHours == null || !IsInt(TimeHours))
+
+        if (TimeHours == null || !IsInt(TimeHours))
         {
-            info.ReplyToCommand($" {Config.Prefix} Time must be in hours! Example : css_ctban <SteamID> <Hours> 'REASON' | Example2 : css_ctban 7777777777777 24 Greafing");
+            info.ReplyToCommand($" {Config.Prefix} Time must be in hours! Example : css_ctban <PlayerName/SteamID> <Hours> 'REASON' | Example2 : css_ctban 7777777777777 24 Greafing");
             return;
         }
         else if (Reason == null || IsInt(Reason))
         {
-            info.ReplyToCommand($" {Config.Prefix} Reason canno't be a number! Example : css_ctban <SteamID> <Hours> 'REASON' | Example2 : css_ctban 7777777777777 24 Greafing");
+            info.ReplyToCommand($" {Config.Prefix} Reason canno't be a number! Example : css_ctban <PlayerName/SteamID> <Hours> 'REASON' | Example2 : css_ctban 7777777777777 24 Greafing");
         }
         else
         {
