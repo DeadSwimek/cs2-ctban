@@ -39,6 +39,7 @@ public partial class CTBans : BasePlugin, IPluginConfig<ConfigBan>
     private static readonly string?[] remaining = new string?[64];
     private static readonly string?[] reason = new string?[64];
     private static readonly int?[] Showinfo = new int?[64];
+    private static readonly bool?[] session = new bool?[64];
 
 
     public ConfigBan Config { get; set; }
@@ -104,6 +105,7 @@ public partial class CTBans : BasePlugin, IPluginConfig<ConfigBan>
                 remaining[client] = null;
                 reason[client] = null;
                 Showinfo[client] = null;
+                session[client] = false;
             }
             else
             {
@@ -117,6 +119,7 @@ public partial class CTBans : BasePlugin, IPluginConfig<ConfigBan>
             banned[client] = false;
             remaining[client] = null;
             reason[client] = null;
+            session[client] = false;
         }
         return HookResult.Continue;
     }
@@ -142,11 +145,7 @@ public partial class CTBans : BasePlugin, IPluginConfig<ConfigBan>
         {
             if (banned[client] == true)
             {
-                player.PrintToChat($" {Config.Prefix} You are banned to connect in {ChatColors.LightBlue}CT{ChatColors.Default}.");
-                player.PrintToChat($" {Config.Prefix} Remaining of Ban to {ChatColors.LightBlue}CT{ChatColors.Default} is {ChatColors.Red}{remaining[client]}.");
-                player.PrintToChat($" {Config.Prefix} Reason of ban is is {ChatColors.Red}{reason[client]}.");
                 Showinfo[client] = 1;
-
                 player.ExecuteClientCommand("play sounds/ui/counter_beep.vsnd");
                 return HookResult.Stop;
             }
