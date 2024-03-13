@@ -13,6 +13,7 @@
 
 - Can banning player to connect in CT Team
 - Can unbanning player to connect in CT Team
+- Session banning the player
 - Database maked
 - Can make banlist
 
@@ -23,7 +24,7 @@
 # Commands
 **css_ctban**
 
-`Usage: /ctban <SteamID> <Hours> 'REASON'`
+`Usage: /ctban <SteamID/PLAYERNAME> <Hours> 'REASON'`
 
 **css_unctban**
 
@@ -32,6 +33,10 @@
 **css_isctbanned**
 
 `Usage: /isctbanned <SteamID>`
+
+**css_ctsessionban**
+
+`Usage: /ctsessionban <PLAYERNAME> <REASON>`
 
 | Command      | Permission   |
 | ------------ | ------------ |
