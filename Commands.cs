@@ -11,6 +11,44 @@ namespace CTBans;
 
 public partial class CTBans
 {
+    [ConsoleCommand("css_ctsessionban", "Ban player to CT")]
+    public void addsessionban(CCSPlayerController? player, CommandInfo info)
+    {
+        if (!AdminManager.PlayerHasPermissions(player, "@css/ban"))
+        {
+            info.ReplyToCommand($" {Config.Prefix} You dosen't have permission to this command!");
+            return;
+        }
+        var Player = info.ArgByIndex(1);
+        var Reason = info.GetArg(2);
+
+        if (Reason == null)
+        {
+            info.ReplyToCommand($" {Config.Prefix} Reason canno't be a number! Example : css_ctsessionban <PlayerName> 'REASON' | Example2 : css_ctsessionban Player Greafing");
+            return;
+        }
+
+        foreach (var find_player in Utilities.GetPlayers())
+        {
+            if (find_player.PlayerName.ToString() == Player)
+            {
+                info.ReplyToCommand($" {Config.Prefix} Player Name '{Player}' has been banned!");
+            }
+        }
+        info.ReplyToCommand($" {Config.Prefix} You successful ban player {Player}");
+        foreach (var find_player in Utilities.GetPlayers())
+        {
+            if (find_player.PlayerName.ToString() == Player)
+            {
+                find_player.PrintToChat($" {Config.Prefix} You are banned from {ChatColors.LightBlue}CT{ChatColors.Default} by admin {ChatColors.Red}{player.PlayerName}{ChatColors.Default} for reason: {ChatColors.Gold}{Reason} ");
+                Showinfo[find_player.Index] = 1;
+                banned[find_player.Index] = true;
+                reason[find_player.Index] = $"{Reason}";
+                session[find_player.Index] = true;
+                find_player.ChangeTeam(CounterStrikeSharp.API.Modules.Utils.CsTeam.Terrorist);
+            }
+        }
+    }
     [ConsoleCommand("css_ctban", "Ban player to CT")]
     public void addban(CCSPlayerController? player, CommandInfo info)
     {
