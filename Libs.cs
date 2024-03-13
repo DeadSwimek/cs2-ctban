@@ -120,9 +120,16 @@ public partial class CTBans
         }
         else
         {
-            banned[client] = false;
-            remaining[client] = null;
-            reason[client] = null;
+            if (session[client] == true)
+            {
+                banned[client] = true;
+            }
+            else
+            {
+                banned[client] = false;
+                remaining[client] = null;
+                reason[client] = null;
+            }
         }
     }
 }
