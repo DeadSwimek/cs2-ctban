@@ -40,7 +40,7 @@ public partial class CTBans
         {
             if (find_player.PlayerName.ToString() == Player)
             {
-                find_player.PrintToChat($" {Config.Prefix} You are banned from {ChatColors.LightBlue}CT{ChatColors.Default} by admin {ChatColors.Red}{player.PlayerName}{ChatColors.Default} for reason: {ChatColors.Gold}{Reason} ");
+                find_player.PrintToChat($" {Config.Prefix} You are banned from {ChatColors.LightBlue}CT{ChatColors.Default} by admin {ChatColors.Red}{player!.PlayerName}{ChatColors.Default} for reason: {ChatColors.Gold}{Reason} ");
                 Showinfo[find_player.Index] = 1;
                 banned[find_player.Index] = true;
                 reason[find_player.Index] = $"{Reason}";
@@ -132,7 +132,7 @@ public partial class CTBans
                 {
                     if(find_player.SteamID.ToString() == SteamID)
                     {
-                        find_player.PrintToChat($" {Config.Prefix} You are banned from {ChatColors.LightBlue}CT{ChatColors.Default} by admin {ChatColors.Red}{player.PlayerName}{ChatColors.Default} for reason: {ChatColors.Gold}{Reason} ");
+                        find_player.PrintToChat($" {Config.Prefix} You are banned from {ChatColors.LightBlue}CT{ChatColors.Default} by admin {ChatColors.Red}{player!.PlayerName}{ChatColors.Default} for reason: {ChatColors.Gold}{Reason} ");
                         find_player.ChangeTeam(CounterStrikeSharp.API.Modules.Utils.CsTeam.Terrorist);
                     }
                 }
@@ -202,11 +202,11 @@ public partial class CTBans
             var nowtimeis = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
             var timeRemainingFormatted =
             $"{timeRemaining.Days}d {timeRemaining.Hours}:{timeRemaining.Minutes:D2}:{timeRemaining.Seconds:D2}";
-            player.PrintToChat($" {ChatColors.Red}|-------------| {ChatColors.Default}Info about {SteamID} {ChatColors.Red}|-------------|");
-            player.PrintToChat($" {ChatColors.Default}SteamID {ChatColors.Red}{SteamID}{ChatColors.Default} is {ChatColors.Red}banned.");
-            player.PrintToChat($" {ChatColors.Default}Reason of ban is {ChatColors.Red}{reason}{ChatColors.Default}.");
-            player.PrintToChat($" {ChatColors.Default}Time of ban is {ChatColors.Red}{timeRemainingFormatted}{ChatColors.Default}.");
-            player.PrintToChat($" {ChatColors.Red}|-------------| {ChatColors.Default}Info about {SteamID} {ChatColors.Red}|-------------|");
+            player!.PrintToChat($" {ChatColors.Red}|-------------| {ChatColors.Default}Info about {SteamID} {ChatColors.Red}|-------------|");
+            player!.PrintToChat($" {ChatColors.Default}SteamID {ChatColors.Red}{SteamID}{ChatColors.Default} is {ChatColors.Red}banned.");
+            player!.PrintToChat($" {ChatColors.Default}Reason of ban is {ChatColors.Red}{reason}{ChatColors.Default}.");
+            player!.PrintToChat($" {ChatColors.Default}Time of ban is {ChatColors.Red}{timeRemainingFormatted}{ChatColors.Default}.");
+            player!.PrintToChat($" {ChatColors.Red}|-------------| {ChatColors.Default}Info about {SteamID} {ChatColors.Red}|-------------|");
         }
     }
 }
