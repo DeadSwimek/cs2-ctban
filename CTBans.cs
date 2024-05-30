@@ -126,7 +126,7 @@ public partial class CTBans : BasePlugin, IPluginConfig<ConfigBan>
     [GameEventHandler]
     public HookResult OnPlayerChangeTeam(CCSPlayerController? player, CommandInfo command)
     {
-        var client = player.Index;
+        var client = player!.Index;
 
         if (!Int32.TryParse(command.ArgByIndex(1), out int team_switch))
         {
