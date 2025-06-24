@@ -1,4 +1,4 @@
-using CounterStrikeSharp.API;
+﻿using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Admin;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
@@ -11,7 +11,6 @@ namespace CTBans;
 
 public partial class CTBans
 {
-    [ConsoleCommand("css_ctsessionban", "Ban player to CT")]
     public void addsessionban(CCSPlayerController? player, CommandInfo info)
     {
         if (!AdminManager.PlayerHasPermissions(player, "@css/ban"))
@@ -49,7 +48,6 @@ public partial class CTBans
             }
         }
     }
-    [ConsoleCommand("css_ctban", "Ban player to CT")]
     public void addban(CCSPlayerController? player, CommandInfo info)
     {
         if (!AdminManager.PlayerHasPermissions(player, "@css/ban"))
@@ -143,7 +141,6 @@ public partial class CTBans
             }
         }
     }
-    [ConsoleCommand("css_unctban", "UNBan player to CT")]
     public void UnbanCT(CCSPlayerController? player, CommandInfo info)
     {
         if (!AdminManager.PlayerHasPermissions(player, "@css/ban"))
@@ -171,7 +168,6 @@ public partial class CTBans
             info.ReplyToCommand($" {Config.Prefix} You successful unban a player to play in CT Team!");
         }
     }
-    [ConsoleCommand("css_isctbanned", "Info about CT Ban")]
     public void InfobanCT(CCSPlayerController? player, CommandInfo info)
     {
         if (!AdminManager.PlayerHasPermissions(player, "@css/ban"))

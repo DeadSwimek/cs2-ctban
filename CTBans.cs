@@ -55,6 +55,11 @@ public partial class CTBans : BasePlugin, IPluginConfig<ConfigBan>
         WriteColor("CT BANS - Plugins has been [*LOADED*]", ConsoleColor.Green);
         CreateDatabase();
 
+        AddCommand(Config.SessionBan, "Session Ban Command", addsessionban);
+        AddCommand(Config.CTBan, "Ban Command", addban);
+        AddCommand(Config.UNBan, "UNBan Command", UnbanCT);
+        AddCommand(Config.IsBanned, "IsBanned Command", InfobanCT);
+
         AddCommandListener("jointeam", OnPlayerChangeTeam);
         RegisterListener<Listeners.OnTick>(() =>
         {

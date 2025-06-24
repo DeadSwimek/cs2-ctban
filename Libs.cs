@@ -1,4 +1,4 @@
-using CounterStrikeSharp.API;
+﻿using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Modules.Utils;
 using Nexd.MySQL;
@@ -63,7 +63,7 @@ public partial class CTBans
     {
         MySqlDb MySql = new MySqlDb(Config.DBHost, Config.DBUser, Config.DBPassword, Config.DBDatabase);
 
-        MySqlQueryResult result = MySql!.Table("deadswim_ctbans").Where(MySqlQueryCondition.New("ban_steamid", "=", player.SteamID.ToString())).Select();
+        MySqlQueryResult result = MySql!.Table("deadswim_ctbans").Where(MySqlQueryCondition.New("ban_steamid", "=", player!.SteamID.ToString())).Select();
         if (result.Rows == 1)
         {
             return true;
@@ -74,18 +74,18 @@ public partial class CTBans
     {
         MySqlDb MySql = new MySqlDb(Config.DBHost, Config.DBUser, Config.DBPassword, Config.DBDatabase);
 
-        MySqlQueryResult result = MySql!.Table("deadswim_ctbans").Where(MySqlQueryCondition.New("ban_steamid", "=", player.SteamID.ToString())).Select();
+        MySqlQueryResult result = MySql!.Table("deadswim_ctbans").Where(MySqlQueryCondition.New("ban_steamid", "=", player!.SteamID.ToString())).Select();
         if (result.Rows == 1)
         {
             return result.Get<int>(0, "end");
         }
         return -1;
     }
-    public string GetPlayerBanReason(CCSPlayerController? player)
+    public string? GetPlayerBanReason(CCSPlayerController? player)
     {
         MySqlDb MySql = new MySqlDb(Config.DBHost, Config.DBUser, Config.DBPassword, Config.DBDatabase);
 
-        MySqlQueryResult result = MySql!.Table("deadswim_ctbans").Where(MySqlQueryCondition.New("ban_steamid", "=", player.SteamID.ToString())).Select();
+        MySqlQueryResult result = MySql!.Table("deadswim_ctbans").Where(MySqlQueryCondition.New("ban_steamid", "=", player!.SteamID.ToString())).Select();
         if (result.Rows == 1)
         {
             return $"{result.Get<string>(0, "reason")}";

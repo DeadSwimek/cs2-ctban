@@ -10,6 +10,10 @@ public class ConfigBan : BasePluginConfig
 {
     [JsonPropertyName("Prefix")] public string Prefix { get; set; } = $" {ChatColors.Default}[{ChatColors.Green}MadGames.eu{ChatColors.Default}]";
     [JsonPropertyName("permission")] public string permission { get; set; } = "@css/reservation";
+    [JsonPropertyName("SessionBan")] public string SessionBan { get; set; } = "css_ctsessionban";
+    [JsonPropertyName("CTBan")] public string CTBan { get; set; } = "css_ctban";
+    [JsonPropertyName("UNBan")] public string UNBan { get; set; } = "css_ctunban";
+    [JsonPropertyName("IsBanned")] public string IsBanned { get; set; } = "css_isctbanned";
 
 
 
