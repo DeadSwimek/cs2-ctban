@@ -38,16 +38,16 @@
 
 `Usage: /ctsessionban <PLAYERNAME> <REASON>`
 
-| Command      | Permission   |
-| ------------ | ------------ |
-| `css_ctban`    | @css/ban     |
-| `css_unctban`    | @css/ban     |
 #Config
 
 ```JSON
 {
   "Prefix": " \u0001[\u0004MadGames.eu\u0001]",
   "permission": "@css/reservation",
+  "SessionBan": "css_ctsessionban",
+  "CTBan": "css_ctban",
+  "UNBan": "css_ctunban",
+  "IsBanned": "css_isctbanned",
   "DBDatabase": "database",
   "DBUser": "user",
   "DBPassword": "password",
