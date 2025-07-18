@@ -1,8 +1,3 @@
-# TBans
-
-
-[CLICK TO ALTERNATIVE T BANS](https://github.com/DeadSwimek/cs2-tban)
-
 # https://discord.com/invite/WNK777rhwg CONNECT FOR LIST ALL MY PLUGINS!!!
 
 
@@ -52,6 +47,7 @@
   "UNBan": "css_ctunban",
   "IsBanned": "css_isctbanned",
   "DennySound": "sounds/ui/counter_beep.vsnd",
+  "TeamOfBan": 3, // TeamNumber (3=CT)
   "DBDatabase": "database",
   "DBUser": "user",
   "DBPassword": "password",
