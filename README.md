@@ -51,6 +51,7 @@
   "CTBan": "css_ctban",
   "UNBan": "css_ctunban",
   "IsBanned": "css_isctbanned",
+  "DennySound": "sounds/ui/counter_beep.vsnd",
   "DBDatabase": "database",
   "DBUser": "user",
   "DBPassword": "password",
