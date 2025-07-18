@@ -1,0 +1,16 @@
+{
+  "PrintToCenter1": "You are <font color='red'>banned</font> to join in <font color='blue'>CT</font>!<br>",
+  "PrintToCenter2": "<font color='green'>Remaining time</font> <font color='red'>{0}</font><br>",
+  "PrintToCenter3": "<font color='green'>Reason of ban</font>  <font color='red'>{0}</font><br>",
+  "DontAccess": " {RED}You dosen't have permission to this command!",
+  "CantBe": " Reason canno't be a {RED}{0}{DEFAULT}! Example : {GREEN}{1}",
+  "CantBe2": " Time must be in {RED}hours{DEFAULT}! Example : {GREEN} css_ctban <PlayerName/SteamID> <Hours> 'REASON' | Example2 : css_ctban 7777777777777 24 Greafing",
+  "CantBe3": " Reason canno't be a number! Example : css_ctban <PlayerName/SteamID> <Hours> 'REASON' | Example2 : css_ctban 7777777777777 24 Greafing",
+  "CantBe4": " Steamid is must be number! Example : css_unctban <SteamID> | Example2 : css_unctban 7777777777777",
+  "CantBe5": " Steamid is must be number! Example : css_isctbanned <SteamID> | Example2 : css_isctbanned 7777777777777",
+  "Banned": " Player {GREEN}{0}{DEFAULT} has been Banned!",
+  "IsBanned": " This player {GREEN}{0}{DEFAULT} have Active ban!",
+  "GotBan": " You are banned for Connect to {BLUE}CT{DEFAULT} by admin {GREEN}{0}{DEFAULT} for reason: {GREEN}{1}",
+  "NotBanned": " This {GREEN}{0}{DEFAULT} is not banned to connect in {BLUE}CT",
+  "UnBanned": " {GREEN}You successful unban a player to play in {BLUE}CT TEAM!"
+}

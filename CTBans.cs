@@ -73,11 +73,14 @@ public partial class CTBans : BasePlugin, IPluginConfig<ConfigBan>
                 continue;
                 if (Showinfo[client.Index] == 1)
                 {
+                    var remain = remaining[client.Index];
+                    var res = reason[client.Index];
+                    if (remain == null || res == null) return;
                     client.PrintToCenterHtml(
                             $"<img src='https://icons.iconarchive.com/icons/paomedia/small-n-flat/48/sign-ban-icon.png'><br><br>" +
-                            $"You are <font color='red'>banned</font> to join in <font color='blue'>CT</font>!<br>" +
-                            $"<font color='green'>Remaining time</font> <font color='red'>{remaining[client.Index]}</font><br>" +
-                            $"<font color='green'>Reason of ban</font>  <font color='red'>{reason[client.Index]}</font><br>");
+                            $"{Localizer["PrintToCenter1"]}" +
+                            $"{Localizer["PrintToCenter2", remain]}" +
+                            $"{Localizer["PrintToCenter3", res]}");
                     AddTimer(10.0f, () =>
                     {
                         Showinfo[client.Index] = null;

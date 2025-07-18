@@ -19,6 +19,24 @@ public partial class CTBans
         }
         return true;
     }
+    private string ReplaceColorTags(string input)
+    {
+        string[] colorPatterns =
+        {
+                "{DEFAULT}", "{RED}", "{LIGHTPURPLE}", "{GREEN}", "{LIME}", "{LIGHTGREEN}", "{LIGHTRED}", "{GRAY}",
+                "{LIGHTOLIVE}", "{OLIVE}", "{LIGHTBLUE}", "{BLUE}", "{PURPLE}", "{GRAYBLUE}"
+            };
+        string[] colorReplacements =
+        {
+                "\x01", "\x02", "\x03", "\x04", "\x05", "\x06", "\x07", "\x08", "\x09", "\x10", "\x0B", "\x0C", "\x0E",
+                "\x0A"
+            };
+
+        for (var i = 0; i < colorPatterns.Length; i++)
+            input = input.Replace(colorPatterns[i], colorReplacements[i]);
+
+        return input;
+    }
 
     static void WriteColor(string message, ConsoleColor color)
     {
@@ -49,6 +67,7 @@ public partial class CTBans
 
 
             MySql.ExecuteNonQueryAsync(@"CREATE TABLE IF NOT EXISTS `deadswim_ctbans` (`id` INT AUTO_INCREMENT PRIMARY KEY, `ban_steamid` VARCHAR(32) UNIQUE NOT NULL, `end` INT(11) NOT NULL, `reason` VARCHAR(32) NOT NULL, `banned_by` VARCHAR(32) NOT NULL, UNIQUE (`ban_steamid`));");
+            MySql.ExecuteNonQueryAsync(@"CREATE TABLE IF NOT EXISTS `deadswim_ctbans_history` (`id` INT AUTO_INCREMENT PRIMARY KEY, `ban_steamid` VARCHAR(32) NOT NULL, `end` INT(11) NOT NULL, `reason` VARCHAR(32) NOT NULL, `banned_by` VARCHAR(32) NOT NULL, UNIQUE (`id`));");
 
             WriteColor($"CT BANS - *[MySQL {Config.DBHost} Connected]", ConsoleColor.Green);
 
