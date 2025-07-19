@@ -1,0 +1,15 @@
+C:\Users\ondra\Desktop\CTBans\CTApi\BuildOutput\shared\CTSharedApi\CTSharedApi.deps.json
+C:\Users\ondra\Desktop\CTBans\CTApi\BuildOutput\shared\CTSharedApi\CTSharedApi.dll
+C:\Users\ondra\Desktop\CTBans\CTApi\BuildOutput\shared\CTSharedApi\CTSharedApi.pdb
+C:\Users\ondra\Desktop\CTBans\CTApi\obj\Debug\CTSharedApi.csproj.AssemblyReference.cache
+C:\Users\ondra\Desktop\CTBans\CTApi\obj\Debug\CTSharedApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ondra\Desktop\CTBans\CTApi\obj\Debug\CTSharedApi.AssemblyInfoInputs.cache
+C:\Users\ondra\Desktop\CTBans\CTApi\obj\Debug\CTSharedApi.AssemblyInfo.cs
+C:\Users\ondra\Desktop\CTBans\CTApi\obj\Debug\CTSharedApi.csproj.CoreCompileInputs.cache
+C:\Users\ondra\Desktop\CTBans\CTApi\obj\Debug\CTSharedApi.dll
+C:\Users\ondra\Desktop\CTBans\CTApi\obj\Debug\refint\CTSharedApi.dll
+C:\Users\ondra\Desktop\CTBans\CTApi\obj\Debug\CTSharedApi.pdb
+C:\Users\ondra\Desktop\CTBans\CTApi\obj\Debug\ref\CTSharedApi.dll
+C:\Users\ondra\Desktop\CTBans\BuildOutput\shared\CTSharedApi\CTSharedApi.deps.json
+C:\Users\ondra\Desktop\CTBans\BuildOutput\shared\CTSharedApi\CTSharedApi.dll
+C:\Users\ondra\Desktop\CTBans\BuildOutput\shared\CTSharedApi\CTSharedApi.pdb

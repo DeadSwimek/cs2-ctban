@@ -1,17 +1,19 @@
 using CounterStrikeSharp.API;
 using CounterStrikeSharp.API.Core;
-using CounterStrikeSharp.API.Core.Attributes.Registration;
-using CounterStrikeSharp.API.Modules.Commands;
-using CounterStrikeSharp.API.Modules.Admin;
-using CounterStrikeSharp.API.Modules.Utils;
-using CounterStrikeSharp.API.Modules.Menu;
 using CounterStrikeSharp.API.Core.Attributes;
-using CounterStrikeSharp.API.Modules.Timers;
-using System.ComponentModel;
-using CounterStrikeSharp.API.Modules.Memory;
-using Nexd.MySQL;
+using CounterStrikeSharp.API.Core.Attributes.Registration;
+using CounterStrikeSharp.API.Core.Capabilities;
+using CounterStrikeSharp.API.Modules.Admin;
+using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Entities;
+using CounterStrikeSharp.API.Modules.Memory;
+using CounterStrikeSharp.API.Modules.Menu;
+using CounterStrikeSharp.API.Modules.Timers;
+using CounterStrikeSharp.API.Modules.Utils;
+using CTAPI;
+using Nexd.MySQL;
 using System;
+using System.ComponentModel;
 using System.Drawing;
 
 namespace CTBans;
@@ -36,12 +38,15 @@ public partial class CTBans : BasePlugin, IPluginConfig<ConfigBan>
     public override string ModuleVersion => "V. 1.0.0";
 
     private static readonly bool?[] banned = new bool?[64];
-    private static readonly string?[] remaining = new string?[64];
-    private static readonly string?[] reason = new string?[64];
+    public static readonly string?[] remaining = new string?[64];
+    public static readonly string?[] reason = new string?[64];
     private static readonly int?[] Showinfo = new int?[64];
     private static readonly bool?[] session = new bool?[64];
 
-
+    public CoreAPI CoreAPI { get; set; } = null!;
+    #pragma warning disable CS0436
+    private static PluginCapability<IAPI> APICapability { get; } = new("ctban:api");
+    #pragma warning disable CS8618
     public ConfigBan Config { get; set; }
 
 
@@ -52,6 +57,12 @@ public partial class CTBans : BasePlugin, IPluginConfig<ConfigBan>
 
     public override void Load(bool hotReload)
     {
+        CoreAPI = new CoreAPI(this);
+        if (CoreAPI != null)
+        {
+            Capabilities.RegisterPluginCapability(APICapability, () => CoreAPI);
+        }
+
         WriteColor("CT BANS - Plugins has been [*LOADED*]", ConsoleColor.Green);
         CreateDatabase();
 
@@ -93,6 +104,7 @@ public partial class CTBans : BasePlugin, IPluginConfig<ConfigBan>
     [GameEventHandler]
     public HookResult OnPlayerConnect(EventPlayerConnectFull @event, GameEventInfo info)
     {
+        if (@event.Userid == null) return HookResult.Continue;
         CCSPlayerController player = @event.Userid;
         if (player == null || !player.IsValid)
             return HookResult.Continue;
@@ -149,12 +161,12 @@ public partial class CTBans : BasePlugin, IPluginConfig<ConfigBan>
         var player_team = team_switch;
 
 
-        if(player_team == 3)
+        if(player_team == Config.TeamOfBan)
         {
             if (banned[client] == true)
             {
                 Showinfo[client] = 1;
-                player.ExecuteClientCommand("play sounds/ui/counter_beep.vsnd");
+                player.ExecuteClientCommand($"play {Config.DennySound}");
                 return HookResult.Stop;
             }
         }

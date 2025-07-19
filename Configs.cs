@@ -14,6 +14,8 @@ public class ConfigBan : BasePluginConfig
     [JsonPropertyName("CTBan")] public string CTBan { get; set; } = "css_ctban";
     [JsonPropertyName("UNBan")] public string UNBan { get; set; } = "css_ctunban";
     [JsonPropertyName("IsBanned")] public string IsBanned { get; set; } = "css_isctbanned";
+    [JsonPropertyName("DennySound")] public string DennySound { get; set; } = "sounds/ui/counter_beep.vsnd";
+    [JsonPropertyName("TeamOfBan")] public int TeamOfBan { get; set; } = 3;
 
 
 

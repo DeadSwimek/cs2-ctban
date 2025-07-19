@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34928.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTSharedApi", "CTSharedApi.csproj", "{4F5C440D-3280-44F9-98E9-6C5D247A547B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F5C440D-3280-44F9-98E9-6C5D247A547B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F5C440D-3280-44F9-98E9-6C5D247A547B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F5C440D-3280-44F9-98E9-6C5D247A547B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F5C440D-3280-44F9-98E9-6C5D247A547B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {23913C9A-9367-4734-9A7C-6DE6039C1FD9}
+	EndGlobalSection
+EndGlobal

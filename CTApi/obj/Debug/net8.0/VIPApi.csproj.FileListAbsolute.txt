@@ -1,0 +1,15 @@
+C:\Users\ondra\Desktop\VIP-Private\CTApi\bin\Debug\net8.0\CTApi.deps.json
+C:\Users\ondra\Desktop\VIP-Private\CTApi\bin\Debug\net8.0\CTApi.dll
+C:\Users\ondra\Desktop\VIP-Private\CTApi\bin\Debug\net8.0\CTApi.pdb
+C:\Users\ondra\Desktop\VIP-Private\CTApi\obj\Debug\net8.0\CTApi.csproj.AssemblyReference.cache
+C:\Users\ondra\Desktop\VIP-Private\CTApi\obj\Debug\net8.0\CTApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ondra\Desktop\VIP-Private\CTApi\obj\Debug\net8.0\CTApi.AssemblyInfoInputs.cache
+C:\Users\ondra\Desktop\VIP-Private\CTApi\obj\Debug\net8.0\CTApi.AssemblyInfo.cs
+C:\Users\ondra\Desktop\VIP-Private\CTApi\obj\Debug\net8.0\CTApi.csproj.CoreCompileInputs.cache
+C:\Users\ondra\Desktop\VIP-Private\CTApi\obj\Debug\net8.0\CTApi.dll
+C:\Users\ondra\Desktop\VIP-Private\CTApi\obj\Debug\net8.0\refint\CTApi.dll
+C:\Users\ondra\Desktop\VIP-Private\CTApi\obj\Debug\net8.0\CTApi.pdb
+C:\Users\ondra\Desktop\VIP-Private\CTApi\obj\Debug\net8.0\ref\CTApi.dll
+C:\Users\ondra\Desktop\VIP-Private\BuildOutput\shared\CustomPlugin\net8.0\CTApi.deps.json
+C:\Users\ondra\Desktop\VIP-Private\BuildOutput\shared\CustomPlugin\net8.0\CTApi.dll
+C:\Users\ondra\Desktop\VIP-Private\BuildOutput\shared\CustomPlugin\net8.0\CTApi.pdb

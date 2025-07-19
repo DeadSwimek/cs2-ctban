@@ -9,7 +9,7 @@ namespace CTBans;
 
 public partial class CTBans
 {
-    private bool IsInt(string sVal)
+    public bool IsInt(string sVal)
     {
         foreach (char c in sVal)
         {
@@ -151,4 +151,5 @@ public partial class CTBans
             }
         }
     }
+
 }
