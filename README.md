@@ -14,6 +14,7 @@
 - Session banning the player
 - Database maked
 - Can make banlist
+- API To Banning and get bans
 
 
 # Donators
